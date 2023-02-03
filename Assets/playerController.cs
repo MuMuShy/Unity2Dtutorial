@@ -14,6 +14,7 @@ public class playerController : MonoBehaviour
 
     private bool isFlip = false;
     private bool isGrounded = false;
+    private bool canAttack = true;
 
     public LayerMask groundmask;
 
@@ -50,6 +51,7 @@ public class playerController : MonoBehaviour
         }
 
         isGrounded = Physics2D.OverlapCircle(groundpoint.position, .2f, groundmask);
+        canAttack = isGrounded;
         
     }
 
@@ -65,6 +67,21 @@ public class playerController : MonoBehaviour
             rig.velocity = new Vector2(rig.velocity.x, 7);
         }
         
+    }
+
+    public void Attack(InputAction.CallbackContext context)
+    {
+        //檢查玩家 是否可以攻擊
+        if (canAttack)
+        {
+            ani.SetBool("attack", true);
+        }
+        
+    }
+
+    public void EndAttack()
+    {
+        ani.SetBool("attack", false);
     }
 
     private void OnDrawGizmos()

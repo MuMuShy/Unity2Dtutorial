@@ -600,7 +600,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 062ab106db5a4a448af76f75fe269674, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -727,6 +727,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: c333c533-1423-4849-9987-40b18ca4dafe
     m_ActionName: Player/Jump[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 135895118}
+        m_TargetAssemblyTypeName: playerController, Assembly-CSharp
+        m_MethodName: Attack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: dc6c875b-2b7f-4287-9259-f9175d785fbb
+    m_ActionName: Player/Attack[/Keyboard/x]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
