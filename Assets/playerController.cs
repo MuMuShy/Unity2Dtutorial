@@ -7,6 +7,8 @@ public class playerController : MonoBehaviour
 {
     public float moveSpeed = 5f;
     public Transform groundpoint;
+    public Transform attackPoint;
+    public float attackRange = 3f;
     private float inputX;
 
     private Rigidbody2D rig;
@@ -16,7 +18,7 @@ public class playerController : MonoBehaviour
     private bool isGrounded = false;
     private bool canAttack = true;
 
-    public LayerMask groundmask;
+    public LayerMask groundmask, enemymask;
 
     private void Start()
     {
@@ -79,6 +81,17 @@ public class playerController : MonoBehaviour
         
     }
 
+    private void CheckAttackHit()
+    {
+        //宣告 打到的目標物件 => 有可能是空的 如果是空的=> 沒打到東西 , 如果有 => 傳送指令給被攻擊者
+        Collider2D[] detectedObjects = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemymask);
+
+        foreach(Collider2D collider in detectedObjects)
+        {
+            Debug.Log(collider.gameObject.name);
+        }
+    }
+
     public void EndAttack()
     {
         ani.SetBool("attack", false);
@@ -87,5 +100,6 @@ public class playerController : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(groundpoint.position, .2f);
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 }
