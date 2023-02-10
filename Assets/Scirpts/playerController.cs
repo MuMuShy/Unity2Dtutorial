@@ -89,6 +89,7 @@ public class playerController : MonoBehaviour
         foreach(Collider2D collider in detectedObjects)
         {
             Debug.Log(collider.gameObject.name);
+            collider.gameObject.SendMessage("onDamage", 10.0f);
         }
     }
 
